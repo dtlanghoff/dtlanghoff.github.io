@@ -14,13 +14,15 @@ function main() {
     var base = bigInt(document.getElementById('base').value);
     var exponent = bigInt(document.getElementById('exponent').value);
     var modulus = bigInt(document.getElementById('modulus').value);
-   
-    var result = modpow(base, exponent, modulus);
     
-    document.getElementById('ansbase').innerHTML = base;
-    document.getElementById('ansexponent').innerHTML = exponent;
-    document.getElementById('ansmodulus').innerHTML = modulus;
-    document.getElementById('ansresult').innerHTML = result;
+    if (base.greaterOrEquals(0) && exponent.greaterOrEquals(0) && modulus.greater(0)) {
+        var result = modpow(base, exponent, modulus);
+        
+        document.getElementById('ansbase').innerHTML = base;
+        document.getElementById('ansexponent').innerHTML = exponent;
+        document.getElementById('ansmodulus').innerHTML = modulus;
+        document.getElementById('ansresult').innerHTML = result;
+    }
 }
 
 function modpow(base, exponent, modulus) {

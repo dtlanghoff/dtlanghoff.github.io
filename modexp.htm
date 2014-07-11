@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Modular exponentiation</title>
+</head>
+
+<body>
+
+<script src="https://peterolson.github.io/BigInteger.js/BigInteger.min.js"></script>
+<script>
+function main() {  
+    var base = bigInt(document.getElementById('base').value);
+    var exponent = bigInt(document.getElementById('exponent').value);
+    var modulus = bigInt(document.getElementById('modulus').value);
+   
+    var result = modpow(base, exponent, modulus);
+    
+    document.getElementById('ansbase').innerHTML = base;
+    document.getElementById('ansexponent').innerHTML = exponent;
+    document.getElementById('ansmodulus').innerHTML = modulus;
+    document.getElementById('ansresult').innerHTML = result;
+}
+
+function modpow(base, exponent, modulus) {
+    var result = bigInt.one;
+    
+    base = base.mod(modulus);
+    
+    while (exponent.greater(0)) {
+        if (exponent.mod(2).equals(1)) {
+            result = result.times(base).mod(modulus);
+        }
+        exponent = exponent.divide(2);
+        base = base.times(base).mod(modulus);
+    }
+    
+    return result;
+}
+</script>
+
+<div>
+  <input id="base" placeholder="base" onkeyup="main()">
+  <input id="exponent" placeholder="exponent" onkeyup="main()">
+  <input id="modulus" placeholder="modulus" onkeyup="main()">
+</div>
+
+<div id="answer">
+  <span id="ansbase"></span><sup><span id="ansexponent"></span></sup> &equiv; <b><span id="ansresult"></span></b>&nbsp;&nbsp;mod <span id="ansmodulus"></span>
+</div>
+
+</body>
+
+</html>

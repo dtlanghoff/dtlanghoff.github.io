@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Kvensk ordbok / kväänin sanakirja</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="minifst.js"></script>
+    <script src="main.js"></script>
+  </head>
+
+  <body>
+    <div>
+      <p>Denne sida brukar ordliste lisensiert under <a href="https://creativecommons.org/licenses/by/3.0/no/deed.en">CC BY 3.0 NO</a> <sup>(Work by Terje Aronsen and Verena Schall at Kainun institutti, Giellatekno at UiT, Divvun at the Norwegian Saami Parliament,
+          and members of the language communities. Source code
+        available at <a href="https://victorio.uit.no/langtech/trunk">https://victorio.uit.no/langtech/trunk/</a>.)</sup> og analyseverktøy frå <a href="http://giellatekno.uit.no/doc/infra/WhatIsThis.html">Universitet i Tromsø</a> lisensierte under <a href="license-gpl.txt">GPLv3</a>.</p>
+    </div>
+    
+    <div>
+      <input autocomplete="off" id="search" placeholder="Søkeord (prøv t.d. 'sanakirjassa', 'nähđä+V+Act+Ind+Prs+Sg1' eller 'het; kuuma')" size="100" autofocus onkeyup="main()">
+      <input type="checkbox" id="lock" onchange="main()">Lås
+      <input type="checkbox" checked="true" id="declension" onchange="main()">Bøy substantiv og adjektiv
+    </div>
+
+    <div id="answer">
+      <span id="ansresult"></span>
+    </div>
+  </body>
+</html>
